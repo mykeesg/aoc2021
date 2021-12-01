@@ -43,28 +43,21 @@ public class Day1 extends Base {
          */
 
         try (BufferedReader reader = new BufferedReader(new FileReader("day1.txt"))) {
-            int[] window = new int[3];
+
+            int windowSize = 3;
+            int[] window = new int[windowSize];
             int count = 0;
             String line = reader.readLine();
 
-            // we have a 1st line
-            if (line != null) {
-                window[0] = Integer.parseInt(line);
+            while (line != null && count < windowSize) {
+                window[count] = Integer.parseInt(line);
                 line = reader.readLine();
-            }
-            // and 2nd line
-            if (line != null) {
-                window[1] = Integer.parseInt(line);
-                line = reader.readLine();
-            }
-            // and 3rd, we have a full window
-            if (line != null) {
-                window[2] = Integer.parseInt(line);
-                line = reader.readLine();
+                ++count;
             }
 
             int currentSum = sum(window);
 
+            count = 0; // was used for indexing
             int idx = 0;
             while (line != null) {
                 int prevSum = currentSum;
@@ -75,7 +68,7 @@ public class Day1 extends Base {
                 }
 
                 line = reader.readLine();
-                idx = (idx + 1) % 3;
+                idx = (idx + 1) % windowSize;
             }
             System.out.println(String.format("Total increments: %1$s", count));
         }
