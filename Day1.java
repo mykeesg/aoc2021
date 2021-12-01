@@ -37,10 +37,9 @@ public class Day1 extends Base {
     public void runSecond() throws Throwable {
         /*
          * A different solution could be a list/queue with length 3, where the first
-         * element is always popped,
-         * and the new one is instered to the end. With that, indexing would not be a
-         * problem, but as I wanted
-         * to avoid unneccessary (un)boxings of int/Integers, I went with the array one.
+         * element is always popped, and the new one is instered to the end.
+         * With that, indexing would not be a problem, but I wanted to avoid
+         * unneccessary (un)boxings of int/Integers, I went with the array one.
          */
 
         try (BufferedReader reader = new BufferedReader(new FileReader("day1.txt"))) {
@@ -78,18 +77,6 @@ public class Day1 extends Base {
                 line = reader.readLine();
                 idx = (idx + 1) % 3;
             }
-
-            /*
-             * while (line != null) {
-             * window[idx] = Integer.parseInt(line);
-             * if (firstDone && prev < current) {
-             * ++count;
-             * }
-             * firstDone = true;
-             * line = reader.readLine();
-             * idx = (idx + 1) % 3;
-             * }
-             */
             System.out.println(String.format("Total increments: %1$s", count));
         }
     }
