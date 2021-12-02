@@ -8,6 +8,9 @@ public class Main {
             case 1:
                 new Day1().run();
                 break;
+            case 2:
+                new Day2().run();
+                break;
             default:
                 System.out.println("Solution not yet defined.");
                 break;
