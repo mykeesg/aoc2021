@@ -4,12 +4,16 @@ public class Main {
             System.out.println("Usage: Main <day_number>");
             return;
         }
+        // Yeah, I know, giantic switch-case.. It was faster/easier this way.
         switch (Integer.parseInt(args[0])) {
             case 1:
                 new Day1().run();
                 break;
             case 2:
                 new Day2().run();
+                break;
+            case 3:
+                new Day3().run();
                 break;
             default:
                 System.out.println("Solution not yet defined.");
