@@ -1,21 +1,19 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Day3 extends Base {
     @Override
     public void runFirst() throws Throwable {
-        System.out.println(String.format("Final position multiplied: %1$s", solve1()));
+        System.out.println(String.format("Power consumption: %1$s", solve1()));
     }
 
     @Override
     public void runSecond() throws Throwable {
-        System.out.println(String.format("Final position multiplied: %1$s", solve2()));
+        System.out.println(String.format("Life support rate: %1$s", solve2()));
     }
 
     private long solve1() throws Throwable {
@@ -68,45 +66,38 @@ public class Day3 extends Base {
                 line = reader.readLine();
             }
 
-            if (data.isEmpty()) {
-                return 0;
+            if (!data.isEmpty()) {
+                long oxygen = calculate(data, true);
+                long co2 = calculate(data, false);
+                result = oxygen * co2;
             }
-
-            BiFunction<List<String>, Integer, Character> leftmostSignifical = (list, idx) -> {
-                if (list.isEmpty()) {
-                    return 0;
-                }
-                int sum = 0;
-                for (String current : list) {
-                    if (current.charAt(idx) == '1') {
-                        sum += 1;
-                    } else {
-                        sum -= 1;
-                    }
-                }
-                return sum >= 0 ? '1' : '0';
-            };
-
-            List<String> oxygen = new ArrayList<>(data);
-            int idx = 0;
-            while (oxygen.size() != 1) {
-                char bit = leftmostSignifical.apply(oxygen, idx);
-                final int ii = idx;
-                oxygen = oxygen.stream().filter(str -> str.charAt(ii) == bit).collect(Collectors.toList());
-                idx += 1;
-            }
-
-            List<String> co2 = new ArrayList<>(data);
-            idx = 0;
-            while (co2.size() != 1) {
-                char bit = leftmostSignifical.apply(co2, idx);
-                final int ii = idx;
-                co2 = co2.stream().filter(str -> str.charAt(ii) != bit).collect(Collectors.toList());
-                idx += 1;
-            }
-
-            result = Long.parseLong(oxygen.get(0), 2) * Long.parseLong(co2.get(0), 2);
         }
         return result;
+    }
+
+    private final BiFunction<List<String>, Integer, Character> mostSignificantAt = (list, idx) -> {
+        int sum = 0;
+        for (String current : list) {
+            if (current.charAt(idx) == '1') {
+                sum += 1;
+            } else {
+                sum -= 1;
+            }
+        }
+        return sum >= 0 ? '1' : '0';
+    };
+
+    private long calculate(List<String> data, boolean eq) {
+        int idx = 0;
+        while (data.size() != 1) {
+            char bit = mostSignificantAt.apply(data, idx);
+            final int ii = idx;
+            data = data
+                    .stream()
+                    .filter(str -> (eq ? str.charAt(ii) == bit : str.charAt(ii) != bit))
+                    .collect(Collectors.toList());
+            idx += 1;
+        }
+        return Long.parseLong(data.get(0), 2);
     }
 }
