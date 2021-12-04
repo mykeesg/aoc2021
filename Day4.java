@@ -74,42 +74,50 @@ public class Day4 extends Base {
 
     @Override
     public void runFirst() throws Throwable {
-        System.out.println(String.format("Bingo: %1$s", solve1()));
+        System.out.println(String.format("First winning Bingo table value: %1$s", solve1()));
     }
 
     @Override
     public void runSecond() throws Throwable {
-        System.out.println(String.format("Bingo: %1$s", solve2()));
+        System.out.println(String.format("Last winning Bingo table value: %1$s", solve2()));
+    }
+
+    List<Integer> readDrawnNumbers(BufferedReader reader) throws Throwable {
+        return Arrays.asList(reader.readLine().split(","))
+                .stream()
+                .map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    List<Board> readBoards(BufferedReader reader) throws Throwable {
+        List<Board> boards = new ArrayList<>();
+        String line = reader.readLine();
+        while (line != null) {
+            if (!line.isEmpty()) {
+                Board board = new Board();
+                for (int ii = 0; ii < 5; ++ii) {
+                    board.addRow(ii, Arrays.asList(line.split(" "))
+                            .stream()
+                            .map(String::trim)
+                            .filter(s -> !s.isEmpty())
+                            .map(Integer::parseInt)
+                            .mapToInt(Integer::intValue)
+                            .toArray());
+                    line = reader.readLine();
+                }
+                boards.add(board);
+            } else {
+                line = reader.readLine();
+            }
+        }
+        return boards;
     }
 
     private long solve1() throws Throwable {
         long result = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader("day4.txt"))) {
-            String line = reader.readLine();
-            List<Integer> drawnNumbers = Arrays.asList(line.split(","))
-                    .stream()
-                    .map(Integer::parseInt).collect(Collectors.toList());
 
-            List<Board> boards = new ArrayList<>();
-            line = reader.readLine();
-            while (line != null) {
-                if (!line.isEmpty()) {
-                    Board board = new Board();
-                    for (int ii = 0; ii < 5; ++ii) {
-                        board.addRow(ii, Arrays.asList(line.split(" "))
-                                .stream()
-                                .map(String::trim)
-                                .filter(s -> !s.isEmpty())
-                                .map(Integer::parseInt)
-                                .mapToInt(Integer::intValue)
-                                .toArray());
-                        line = reader.readLine();
-                    }
-                    boards.add(board);
-                } else {
-                    line = reader.readLine();
-                }
-            }
+            List<Integer> drawnNumbers = readDrawnNumbers(reader);
+            List<Board> boards = readBoards(reader);
 
             for (int num : drawnNumbers) {
                 boolean won = false;
@@ -131,31 +139,9 @@ public class Day4 extends Base {
     private long solve2() throws Throwable {
         long result = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader("day4.txt"))) {
-            String line = reader.readLine();
-            List<Integer> drawnNumbers = Arrays.asList(line.split(","))
-                    .stream()
-                    .map(Integer::parseInt).collect(Collectors.toList());
-
-            List<Board> boards = new ArrayList<>();
-            line = reader.readLine();
-            while (line != null) {
-                if (!line.isEmpty()) {
-                    Board board = new Board();
-                    for (int ii = 0; ii < 5; ++ii) {
-                        board.addRow(ii, Arrays.asList(line.split(" "))
-                                .stream()
-                                .map(String::trim)
-                                .filter(s -> !s.isEmpty())
-                                .map(Integer::parseInt)
-                                .mapToInt(Integer::intValue)
-                                .toArray());
-                        line = reader.readLine();
-                    }
-                    boards.add(board);
-                } else {
-                    line = reader.readLine();
-                }
-            }
+            
+            List<Integer> drawnNumbers = readDrawnNumbers(reader);
+            List<Board> boards = readBoards(reader);
 
             for (int num : drawnNumbers) {
                 Iterator<Board> it = boards.iterator();
