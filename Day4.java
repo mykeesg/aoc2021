@@ -33,26 +33,19 @@ public class Day4 extends Base {
         }
 
         boolean hasWinning() {
-            // yeah, i know.. not efficent, but gets the job done.
+            // yeah, i know.. not the prettiest, but gets the job done.
             for (int ii = 0; ii < 5; ++ii) {
-                int count = 0;
+                int countRows = 0;
+                int countCols = 0;
                 for (int jj = 0; jj < 5; ++jj) {
                     if (drawn[ii][jj]) {
-                        count += 1;
+                        countRows += 1;
+                    }
+                    if (drawn[jj][ii]) {
+                        countCols += 1;
                     }
                 }
-                if (count == 5) {
-                    return true;
-                }
-            }
-            for (int jj = 0; jj < 5; ++jj) {
-                int count = 0;
-                for (int ii = 0; ii < 5; ++ii) {
-                    if (drawn[ii][jj]) {
-                        count += 1;
-                    }
-                }
-                if (count == 5) {
+                if (countRows == 5 || countCols == 5) {
                     return true;
                 }
             }
@@ -139,7 +132,7 @@ public class Day4 extends Base {
     private long solve2() throws Throwable {
         long result = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader("day4.txt"))) {
-            
+
             List<Integer> drawnNumbers = readDrawnNumbers(reader);
             List<Board> boards = readBoards(reader);
 
