@@ -1,3 +1,5 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -13,7 +15,7 @@ public class Day2 extends Base {
     }
 
     private long solve1() throws Throwable {
-        try (BufferedReader reader = new BufferedReader(new FileReader("day2.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day2.txt"))) {
             long hx = 0, vy = 0;
             String line = reader.readLine();
             while (line != null) {
@@ -40,7 +42,7 @@ public class Day2 extends Base {
     }
 
     private long solve2() throws Throwable {
-        try (BufferedReader reader = new BufferedReader(new FileReader("day2.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day2.txt"))) {
             long hx = 0, vy = 0, aim = 0;
             String line = reader.readLine();
             while (line != null) {

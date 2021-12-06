@@ -1,7 +1,12 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import util.Coordinate;
+import util.Pair;
 
 public class Day5 extends Base {
 
@@ -115,7 +120,7 @@ public class Day5 extends Base {
     private Pair<List<Line>, Coordinate> readLines() throws Throwable {
         List<Line> lines = new ArrayList<>();
         int maxX = 0, maxY = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("day5.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day5.txt"))) {
             String line = reader.readLine();
             while (line != null) {
                 String[] data = line.split("\\s+");

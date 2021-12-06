@@ -1,3 +1,5 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -13,7 +15,7 @@ public class Day1 extends Base {
     }
 
     private int solve(int windowSize) throws Throwable {
-        try (BufferedReader reader = new BufferedReader(new FileReader("day1.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day1.txt"))) {
             /*
              * A different solution could be a list/queue with the specified length, where
              * the first element is always popped, and the new one is instered to the end.

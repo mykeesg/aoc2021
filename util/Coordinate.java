@@ -1,3 +1,4 @@
+package util;
 public class Coordinate extends Pair<Integer, Integer> {
 
     public static Coordinate from(String data) {

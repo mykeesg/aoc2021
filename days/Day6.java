@@ -1,3 +1,5 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -35,7 +37,7 @@ public class Day6 extends Base {
 
     private long[] readLines() throws Throwable {
         long[] fish = new long[newBornDay + 1]; // 0..8
-        try (BufferedReader reader = new BufferedReader(new FileReader("day6.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day6.txt"))) {
             String line = reader.readLine();
             while (line != null) {
                 String[] data = line.split(",");

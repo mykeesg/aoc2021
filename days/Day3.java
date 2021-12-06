@@ -1,3 +1,5 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class Day3 extends Base {
 
     private long solve1() throws Throwable {
         long result = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("day3.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day3.txt"))) {
             String line = reader.readLine();
             if (line != null) {
                 // number of bits is the length of the string.
@@ -58,7 +60,7 @@ public class Day3 extends Base {
 
     private long solve2() throws Throwable {
         long result = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("day3.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day3.txt"))) {
             List<String> data = new ArrayList<>();
             String line = reader.readLine();
             while (line != null) {

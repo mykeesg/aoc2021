@@ -1,3 +1,5 @@
+import days.*;
+
 public class Main {
     public static void main(String[] args) throws Throwable {
         if (args.length == 0) {

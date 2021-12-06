@@ -1,3 +1,5 @@
+package days;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -7,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+
+import util.Pair;
 
 public class Day4 extends Base {
 
@@ -107,7 +111,7 @@ public class Day4 extends Base {
 
     private long solve1() throws Throwable {
         long result = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("day4.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day4.txt"))) {
 
             List<Integer> drawnNumbers = readDrawnNumbers(reader);
             List<Board> boards = readBoards(reader);
@@ -131,7 +135,7 @@ public class Day4 extends Base {
 
     private long solve2() throws Throwable {
         long result = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("day4.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("inputs/day4.txt"))) {
 
             List<Integer> drawnNumbers = readDrawnNumbers(reader);
             List<Board> boards = readBoards(reader);

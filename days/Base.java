@@ -1,3 +1,5 @@
+package days;
+
 public abstract class Base implements Runnable {
     @Override
     public void run() {
