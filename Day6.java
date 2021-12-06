@@ -13,6 +13,7 @@ public class Day6 extends Base {
     }
 
     static final int resetDay = 6;
+    static final int newBornDay = 8;
 
     long checkDays(int days) throws Throwable {
         long[] fishes = readLines();
@@ -22,7 +23,7 @@ public class Day6 extends Base {
                 fishes[jj] = fishes[jj + 1];
             }
             fishes[resetDay] += newborn;
-            fishes[fishes.length - 1] = newborn;
+            fishes[newBornDay] = newborn;
         }
 
         long result = 0;
@@ -33,7 +34,7 @@ public class Day6 extends Base {
     }
 
     private long[] readLines() throws Throwable {
-        long[] fish = new long[9]; // 0..8
+        long[] fish = new long[newBornDay + 1]; // 0..8
         try (BufferedReader reader = new BufferedReader(new FileReader("day6.txt"))) {
             String line = reader.readLine();
             while (line != null) {
