@@ -26,6 +26,9 @@ public class Main {
             case 6:
                 new Day6().run();
                 break;
+            case 7:
+                new Day7().run();
+                break;
             default:
                 System.out.println("Solution not yet defined.");
                 break;
