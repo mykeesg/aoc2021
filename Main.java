@@ -8,30 +8,17 @@ public class Main {
         }
         // Yeah, I know, giantic switch-case.. It was faster/easier this way.
         switch (Integer.parseInt(args[0])) {
-            case 1:
-                new Day1().run();
-                break;
-            case 2:
-                new Day2().run();
-                break;
-            case 3:
-                new Day3().run();
-                break;
-            case 4:
-                new Day4().run();
-                break;
-            case 5:
-                new Day5().run();
-                break;
-            case 6:
-                new Day6().run();
-                break;
-            case 7:
-                new Day7().run();
-                break;
-            default:
-                System.out.println("Solution not yet defined.");
-                break;
+            case 1 -> new Day1().run();
+            case 2 -> new Day2().run();
+            case 3 -> new Day3().run();
+            case 4 -> new Day4().run();
+            case 5 -> new Day5().run();
+            case 6 -> new Day6().run();
+            case 7 -> new Day7().run();
+            case 8 -> new Day8().run();
+            case 9 -> new Day9().run();
+            case 10 -> new Day10().run();
+            default -> System.out.println("Solution not yet defined.");
         }
     }
 }
