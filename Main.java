@@ -18,6 +18,7 @@ public class Main {
             case 8 -> new Day8().run();
             case 9 -> new Day9().run();
             case 10 -> new Day10().run();
+            case 11 -> new Day11().run();
             default -> System.out.println("Solution not yet defined.");
         }
     }

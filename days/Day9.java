@@ -2,13 +2,11 @@ package days;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.BiFunction;
 
 import util.Coordinate;
 
