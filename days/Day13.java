@@ -110,7 +110,7 @@ public class Day13 extends Base {
     void print() {
         for (int ii = 0; ii < maxY; ++ii) {
             for (int jj = 0; jj < maxX; ++jj) {
-                System.out.print((paper[ii][jj] == 0 ? "." : "#"));
+                System.out.print((paper[ii][jj] == 0 ? " " : "#"));
             }
             System.out.println();
         }
