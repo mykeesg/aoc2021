@@ -21,6 +21,7 @@ public class Main {
             case 11 -> new Day11().run();
             case 12 -> new Day12().run();
             case 13 -> new Day13().run();
+            case 14 -> new Day14().run();
             default -> System.out.println("Solution not yet defined.");
         }
     }
